@@ -1,0 +1,51 @@
+@charset "utf-8";
+/******************************************************
+*   ユーザ編集/作成レイアウト
+******************************************************/
+
+/******************************************************
+*   電話番号入力エリア
+******************************************************/
+.phone-container {
+    margin-bottom: 20px;
+}
+
+.phone-container .input-container {
+    margin-bottom: 0px;
+}
+
+/******************************************************
+*   入力エリア
+******************************************************/
+#email
+,#password
+,#password-confirmation {
+    width: 500px;
+}
+
+#personal-name
+,#personal-name-kana {
+    width: 350px;
+}
+
+#address {
+    width: 100%;
+}
+
+#departments
+,#groups
+,#positions {
+    min-width: 180px;
+}
+
+/******************************************************
+*   権限チェックエリア
+******************************************************/
+.auth-container {
+    display: flex;
+    border-left: solid 5px tomato;
+}
+
+.auth-container > div {
+    padding-left: 5px;
+}

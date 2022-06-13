@@ -1,0 +1,84 @@
+@charset "utf-8";
+/******************************************************
+*   ログインレイアウト
+******************************************************/
+.login-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: var(--bg-color);
+}
+
+/******************************************************
+*   ログインフォーム
+******************************************************/
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 550px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 0px rgb(255, 255, 255);
+}
+
+.login-form > .title {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* 入力項目表示エリア */
+.login-form > .input-container {
+    padding: 35px 10px;
+}
+
+.login-form > .input-container > .input-box {
+    margin-bottom: 30px;
+}
+
+.login-form > .input-container > .input-box:last-child {
+    margin-bottom: 0px;
+}
+
+/* 入力項目 */
+.login-form > .input-container > .input-box input {
+    width: 100%;
+}
+
+/* エラーメッセージ表示エリア */
+.login-form .error {
+    display: none;
+    margin-top: 5px;
+    padding: 0 10px;
+    color: var(--error-color);
+}
+
+/* エラーアイコン */
+.login-form .error i {
+    margin-right: 5px;
+}
+
+/* ログイン状態を維持するチェックボックス */
+.login-form > .remembe-container {
+    padding: 0px 10px;
+    width: fit-content;
+    margin-bottom: 35px;
+}
+
+/* Login ボタン */
+.login-form > .login-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 35px;
+}
+
+.login-form > .login-button-container > .button-common {
+    width: 100%;
+}
+
+/* メールアドレス、パスワードを忘れた方はこちら */
+.login-form > .forgot-password-container {
+    margin-top: 10px;
+    text-align: center;
+}

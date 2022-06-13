@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Apis\DepartmentApiController;
 
 /*
 |--------------------------------------------------------------------------
-| Home Routes
+| Department Api Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+/**
+ * 部門IDに一致するグループを取得
+ * http://xxx/api/department/{department_id}
+ * 
+ */
+Route::get('/{department_id}', [DepartmentApiController::class, 'getGroupsFindByDepartmentId'])->whereNumber('department_id');

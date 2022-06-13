@@ -1,5 +1,6 @@
 /**
  * base.js
+ * 
  */
 $(function(){
     // イベント設定
@@ -17,6 +18,7 @@ $(function(){
 
     /**
      * 初期化処理
+     * 
      */
     function initialize() {
         // LocalStarageを初期化
@@ -28,6 +30,7 @@ $(function(){
 
     /**
      * サイドメニュー　開閉ボタンクリック時イベント
+     * 
      * @param {Object} e 
      */
     function clickBaseSideToggle(e) {

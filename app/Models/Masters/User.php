@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Masters;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,37 +8,41 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * ユーザ Model
+ * 
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * 登録/更新を許可するカラム
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name',     // ユーザ名
+        'email',    // メールアドレス
+        'password', // パスワード
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * 取得不可とするカラム
      *
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password',       // パスワード
+        'remember_token', // RememberToken
     ];
 
     /**
-     * The attributes that should be cast.
+     * 型変換の定義
      *
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime', // メールアドレス確認日時
     ];
 }

@@ -13,7 +13,7 @@
     <ul id="base-side-menu" class="base-side-menu">
         <!--メニュー：Home-->
         <li>
-            <a href="{{ url('/home') }}">
+            <a href="{{ url('/home') }}" class="base-side-menu-link">
                 <div class="menu">
                     <i class="fas fa-home"></i>Home
                 </div>

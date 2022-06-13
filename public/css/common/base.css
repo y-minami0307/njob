@@ -13,9 +13,9 @@
 ******************************************************/
 :root {
     /* ベース */
-    --base-font-color: rgb(255, 255, 255);
-    --base-bg-color: rgb(105, 58, 149);
-    --base-bg-color-hover: rgb(80 29 126);
+    --base-font-color: white;
+    --base-bg-color: var(--bg-color);
+    --base-bg-color-hover: var(--bg-color);
     /* ヘッダー */
     --base-header-height: 40px;
     --base-header-font-color: var(--base-font-color);
@@ -92,7 +92,7 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: rgb(173, 10, 10);
+    background-color: tomato;
 }
 
 .base-header-menu > .notice-container > .notice-count-container > .notice-count {
@@ -145,7 +145,7 @@
 .base-side {
     padding: 10px 0px;
     height: 100%;
-    color: rgb(255, 255, 255);
+    color: white;
     background-color: var(--base-side-menu-bg-color);
 }
 
@@ -173,7 +173,7 @@
 .base-side-toggle-container > .toggle > div {
     width: 100%;
     height: 1px;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
 }
 
 .base-side-toggle-container > .toggle > div:first-child {
@@ -196,7 +196,7 @@
     -webkit-transition: width 0.5s ease;
 }
 
-.base-side-menu a {
+.base-side-menu .base-side-menu-link {
     display: block;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -206,9 +206,9 @@
     cursor: pointer;
 }
 
-.base-side-menu a:hover {
+.base-side-menu .base-side-menu-link:hover {
     color: var(--font-color);
-    background-color: rgb(255, 255, 255);
+    background-color: white;
 }
 
 .base-side-menu .menu {
@@ -242,6 +242,10 @@
 .base-breadcrumbs > .item > .link {
     color: rgb(88, 88, 88);
     cursor: pointer;
+}
+
+.base-breadcrumbs > .item > .link:hover {
+    text-decoration: underline;
 }
 
 .base-breadcrumbs > .item > .link + div {
@@ -288,7 +292,6 @@
 
 .base-container > .page-wrap > .page-container > .container {
     flex: 1;
-    overflow: auto;
 }
 
 /******************************************************
@@ -297,7 +300,6 @@
 .base-right-bar {
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
     width: 270px;
 }
 

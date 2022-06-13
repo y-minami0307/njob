@@ -1,0 +1,89 @@
+@charset "utf-8";
+/******************************************************
+*   管理ページ編集/作成共通レイアウト
+******************************************************/
+.maint-input-wrap {
+    flex: 1;
+    padding: 0px 10px;
+    overflow: hidden;
+}
+
+.maint-input-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.maint-input-form main {
+    flex: 1;
+    overflow: auto;
+}
+
+/******************************************************
+*   コンテナ
+******************************************************/
+.maint-container {
+    padding: 10px;
+}
+
+/******************************************************
+*   入力エリア
+******************************************************/
+.maint-container .column {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.maint-container .column .input-container {
+    margin-right: 20px;
+}
+
+.maint-container .input-container {
+    margin-bottom: 20px;
+}
+
+/* ラベル */
+.maint-container .input-container > label {
+    display: block;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    border-left: solid 5px tomato;
+}
+
+/* エラー */
+.maint-container .error {
+    display: none;
+    margin-top: 10px;
+    padding-left: 10px;
+    color: var(--error-color);
+}
+
+.maint-container .error i {
+    margin-right: 5px;
+}
+
+/******************************************************
+*   フッター
+******************************************************/
+.maint-input-form footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+/******************************************************
+*   ボタン
+******************************************************/
+.maint-input-form footer .button-common {
+    width: 150px;
+    letter-spacing: 5px;
+}
+
+/******************************************************
+*   バリデーションエラー
+******************************************************/
+.maint-container > .valid-error-container {
+    margin-bottom: 20px;
+}

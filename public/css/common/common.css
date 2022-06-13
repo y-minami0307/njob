@@ -11,6 +11,14 @@
     --font-color: rgb(17, 17, 17);
     /* 文字サイズ */
     --font-size: 14px;
+    /* 背景色 */
+    --bg-color: rgb(105, 58, 149);
+    /* 入力項目背景色 */
+    --input-bg-color: rgb(232, 240, 254);
+    /* 入力項目線色 */
+    --input-border-color: rgb(255, 189, 229);
+    /* エラー項目に使用する色 */
+    --error-color: tomato;
 }
 
 /******************************************************
@@ -22,4 +30,269 @@ body {
     font-size: var(--font-size);
     font-family: "メイリオ" ;
     color: var(--font-color);
+}
+
+/******************************************************
+*   input
+******************************************************/
+input {
+    padding: 5px 10px;
+}
+
+.input-common {
+    border: solid 1px var(--input-border-color);
+    border-radius: 3px;
+    background-color: var(--input-bg-color);
+}
+
+.input-common:focus {
+    outline: none;
+    border: solid 2px var(--input-border-color);
+}
+
+/******************************************************
+*   input　下線のみが存在する入力項目
+******************************************************/
+.under-line-only {
+    border-bottom: solid 1px var(--input-border-color);
+}
+
+.under-line-only:focus {
+    outline: none;
+    border-bottom: solid 2px var(--input-border-color);
+}
+
+/******************************************************
+*   select
+******************************************************/
+select {
+    padding: 5px 10px;
+    padding-right: 30px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.select-common {
+    position: relative;
+    width: fit-content;
+}
+
+.select-common > select {
+    width: 100%;
+    border: solid 1px var(--input-border-color);
+    border-radius: 3px;
+    background-color: var(--input-bg-color);
+}
+
+.select-common::after {
+    content: "";
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    width: 0;
+    border-top: 4.5px solid tomato;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.select-common > select:focus {
+    outline: none;
+    border: solid 2px var(--input-border-color);
+}
+
+/******************************************************
+*   textarea
+******************************************************/
+textarea {
+    padding: 5px 10px;
+}
+
+.textarea-common {
+    border: solid 1px var(--input-border-color);
+    border-radius: 3px;
+    background-color: var(--input-bg-color);
+}
+
+.textarea-common:focus {
+    outline: none;
+    border: solid 2px var(--input-border-color);
+}
+
+/******************************************************
+*   チェックボックス
+******************************************************/
+.checkbox-before {
+    display: none;
+}
+
+.checkbox-before + label {
+    position: relative;
+    display: block;
+    padding-left: 25px;
+    font: 14px/20px 'Open Sans', Arial, sans-serif;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkbox-before + label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 19px;
+    height: 19px;
+    border: 1px solid var(--input-border-color);
+    opacity: .6;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+}
+
+.checkbox-before:checked + label:before {
+    top: -5px;
+    left: 5px;
+    width: 10px;
+    border-radius: 0;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    opacity: 1;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.checkbox-after {
+    display: none;
+}
+
+.checkbox-after + label {
+    position: relative;
+    display: block;
+    padding-right: 25px;
+    font: 14px/20px 'Open Sans', Arial, sans-serif;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkbox-after + label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 19px;
+    height: 19px;
+    border: 1px solid var(--input-border-color);
+    opacity: .6;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+}
+
+.checkbox-after + label:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 19px;
+    height: 19px;
+    border: 1px solid var(--input-border-color);
+    opacity: .6;
+    -webkit-transition: all .12s, border-color .08s;
+    transition: all .12s, border-color .08s;
+}
+
+.checkbox-after:checked + label:after {
+    top: -5px;
+    right: 3px;
+    width: 8px;
+    border-radius: 0;
+    border-top-color: transparent;
+    border-bottom: solid 3px var(--input-border-color);
+    border-left-color: transparent;
+    border-right: solid 3px var(--input-border-color);
+    opacity: 1;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+/******************************************************
+*   ボタン
+******************************************************/
+.button-common {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+    color: white;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    background-color: var(--input-border-color);
+    outline: none;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.button-common:hover
+,.button-common:focus {
+    color: var(--input-border-color);
+    border-color: var(--input-border-color);
+    background-color: white;
+}
+
+.button-common::before,
+.button-common::after {
+    content: '';
+    position: absolute;
+    display: block;
+    z-index: -1;
+}
+
+.button-common,
+.button-common::before,
+.button-common::after {
+    box-sizing: border-box;
+    transition: all .3s;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-transition: all .3s;
+}
+
+/******************************************************
+*   a
+******************************************************/
+.link-common {
+    color: rgb(0, 173, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-common:hover {
+    font-weight: bold;
+}
+
+/******************************************************
+*   バリデーションエラー
+******************************************************/
+.valid-error-container {
+    padding: 10px 15px;
+    border-radius: 4px;
+    color: white;
+    background-color: tomato;
+}
+
+.valid-error-container > ul > li {
+    margin-bottom: 5px;
+}
+
+.valid-error-container > ul > li:last-child {
+    margin-bottom: 0px;
 }

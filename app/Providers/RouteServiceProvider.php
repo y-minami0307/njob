@@ -42,15 +42,29 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
+            
+            Route::prefix('api/department')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/apis/department.php'));
 
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
             
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/fortify.php'));
+            
             Route::prefix('home')
                 ->middleware('web')
                 ->namespace($this->namespace)
-                ->group(base_path('routes/home.php'));
+                ->group(base_path('routes/webs/home.php'));
+            
+            Route::prefix('maint/user')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/webs/user.php'));
         });
     }
 

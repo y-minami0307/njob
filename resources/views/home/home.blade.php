@@ -5,7 +5,7 @@
 
 {{--固有css--}}
 @push('css')
-<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<link rel="stylesheet" href="{{ asset('css/home/home.css') }}">
 @endpush
 
 {{--固有js--}}

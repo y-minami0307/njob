@@ -1,10 +1,12 @@
 /**
  * BaseSideMenuUtil
+ * 
  */
 class BaseSideMenuUtil {
 
     /**
      * 保存したサイドメニューの状態に対応して開閉を切り替える
+     * 
      */
     static setBaseSideMenu() {
         if (LocalStarageUtil.getInt(LocalStarageUtil.KEY_BASE_SIDE_MENU_STATUS) == 1) {
@@ -18,6 +20,7 @@ class BaseSideMenuUtil {
 
     /**
      * サイドメニューの開閉を切り替える
+     * 
      */
     static toggleBaseSideMenu() {
         if (LocalStarageUtil.getInt(LocalStarageUtil.KEY_BASE_SIDE_MENU_STATUS) == 0) {
@@ -31,6 +34,7 @@ class BaseSideMenuUtil {
 
     /**
      * サイドメニューを開く
+     * 
      */
     static openBaseSideMenu() {
         $('#base-side-menu').css({'width':''});
@@ -39,6 +43,7 @@ class BaseSideMenuUtil {
 
     /**
      * サイドメニューを閉じる
+     * 
      */
     static closeBaseSideMenu() {
         $('#base-side-menu').css({'width':'0px'});
