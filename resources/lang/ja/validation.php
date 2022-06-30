@@ -125,11 +125,13 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => ':attributeは文字列で入力してください',
     'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => ':attribute は既に存在しています',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
-    'half_width_character' => ':attribute は半角英数字で入力してください',
+    'alpha_numeric' => ':attribute は半角英数字で入力してください',
+    'half_width_character' => ':attribute は半角文字で入力してください',
+    'numeric_only' => ':attributeは数値で入力してください',
 
     /*
     |--------------------------------------------------------------------------
@@ -163,12 +165,17 @@ return [
         'user_name' => 'ユーザ名',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'affiliation_code' => '所属',
+        'department_code' => '部門',
+        'group_code' => 'グループ',
+        'position_code' => '役職',
         'personal_name' => '名前',
         'personal_name_kana' => '名前カナ',
         'phone_number' => '電話番号',
         'mobile_phone_number' => '携帯電話番号',
         'post_number' => '郵便番号',
         'address' => '住所',
+        'admin' => '管理者',
     ],
 
 ];

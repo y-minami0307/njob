@@ -250,6 +250,7 @@
 
 .base-breadcrumbs > .item > .link + div {
     margin-left: 5px;
+    color: rgb(88, 88, 88);
 }
 
 .base-breadcrumbs > .item:last-child > .link + div {

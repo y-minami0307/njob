@@ -2,7 +2,8 @@
  * base.js
  * 
  */
-$(function(){
+$(function() {
+    
     // イベント設定
     // サイドメニュー　開閉ボタンクリック時イベント
     $('#base-side-toggle').on('click', clickBaseSideToggle);

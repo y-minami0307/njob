@@ -81,5 +81,5 @@ class SelectBoxUtil {
     static clearExceptFirstItems($select_box) {
         SelectBoxUtil.clearItems($select_box, 1);
     }
-
+    
 }

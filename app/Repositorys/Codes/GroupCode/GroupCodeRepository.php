@@ -10,14 +10,13 @@ use App\Models\Codes\GroupCode;
  */
 class GroupCodeRepository implements GroupCodeRepositoryInterface
 {
-    /**
-     * 部門IDに一致するグループコードを取得
+     /**
+     * グループコードを取得
      * 
-     * @param int department_id 部門ID
-     * @return Collection グループコード
+     * @return Collection 役職コード
      */
-    public function getGroupsFindByDepartment($department_id)
+    public function getAll()
     {
-        return GroupCode::whereDepartmentCodeId($department_id)->get();
+        return GroupCode::get();
     }
 }

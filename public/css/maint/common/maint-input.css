@@ -41,7 +41,7 @@
 }
 
 .maint-container .input-container {
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 /* ラベル */
@@ -52,16 +52,10 @@
     border-left: solid 5px tomato;
 }
 
-/* エラー */
-.maint-container .error {
-    display: none;
+/* 入力エラー */
+.maint-container .input-error {
     margin-top: 10px;
     padding-left: 10px;
-    color: var(--error-color);
-}
-
-.maint-container .error i {
-    margin-right: 5px;
 }
 
 /******************************************************

@@ -1,0 +1,3 @@
+{{--共通チェックボックスコンポーネント--}}
+<x-inputs.commons.hidden-box :id='"hidden-".$id' :name='$name' :classs='[]' :value='$unCheckedValue'></x-inputs.commons.hidden-box>
+<input type="checkbox" id="{{ $id }}" class="checkbox-{{ $checkBoxBeforeAndAfter }} {{ $class }}" name="{{ $name }}" value="{{ $value }}" {!! $otherAttribute !!} {{ $value == $checkedValue ? 'checked' : '' }}><label for="{{ $id }}">{{ $label }}</label>

@@ -1,0 +1,39 @@
+@charset "utf-8";
+/******************************************************
+*   管理ページ共通レイアウト
+******************************************************/
+.maint-list-wrap {
+    flex: 1;
+    padding: 0px 10px;
+    overflow: hidden;
+}
+
+.maint-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.maint-search-container {
+    padding: 3px;
+}
+
+.maint-table-container {
+    flex: 1;
+    overflow: hidden;
+}
+
+/******************************************************
+*   検索条件のレイアウト調整
+******************************************************/
+/* メールアドレス */
+.search-container .col.email, .search-container .col.email > input {
+    flex: 1;
+}
+
+/* 名前 */
+.search-container .col.personal-name, .search-container .col.personal-name > input {
+    flex: 1;
+}

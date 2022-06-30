@@ -12,4 +12,5 @@ use Illuminate\Database\Eloquent\Model;
 class PositionCode extends Model
 {
     use HasFactory;
+    use \App\Traits\Accessors\Groups\CodeTable;
 }

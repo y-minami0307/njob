@@ -17,6 +17,6 @@ trait Abbreviation
      */
     public function getAbbreviationAttribute($abbreviation)
     {
-        return $abbreviation == null ? '' : $abbreviation;
+        return \AppUtil::convertNullToString($abbreviation);
     }
 }

@@ -1,0 +1,2 @@
+{{--共通テキストエリアコンポーネント--}}
+<textarea id="{{ $id }}" class="textarea-common {{ $class }}" name="{{ $name }}" maxlength="{{ $maxlength }}" placeholder="{{ $placeholder }}" rows="{{ $rows }}" {!! $otherAttribute !!}>{{ $value }}</textarea>

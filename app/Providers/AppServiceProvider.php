@@ -13,11 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // 部門 API Service
+        // 所属 API Service
         $this->app->bind(
-            \App\Services\DepartmentApi\DepartmentApiServiceInterface::class,
+            \App\Services\AffiliationsApi\AffiliationsApiServiceInterface::class,
             function ($app) {
-                return new \App\Services\DepartmentApi\DepartmentApiService($app->make(\App\Repositorys\Codes\GroupCode\GroupCodeRepositoryInterface::class));
+                return new \App\Services\AffiliationsApi\AffiliationsApiService();
             },
         );
 

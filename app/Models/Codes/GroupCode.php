@@ -11,5 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GroupCode extends Model
 {
-    use HasFactory, \App\Traits\Accessors\Abbreviation;
+    use HasFactory;
+    use \App\Traits\Accessors\Groups\CodeTable;
 }

@@ -49,7 +49,17 @@ class MessageUtil {
     }
 
     /**
-     * 「{0}の入力形式が正しくありません」のメッセージを返却
+     * 「{0}は半角英数字で入力してください」のメッセージを返却
+     * 
+     * @param {String} name - 項目名
+     * @returns {String} メッセージ
+     */
+     static errorAlphaNumeric(name) {
+        return ERROR_ALPHA_NUMERIC.replace('{0}', name);
+    }
+
+    /**
+     * 「{0}は半角文字で入力してください」のメッセージを返却
      * 
      * @param {String} name - 項目名
      * @returns {String} メッセージ
@@ -57,5 +67,5 @@ class MessageUtil {
     static errorHalfWidthCharacter(name) {
         return ERROR_HALF_WIDTH_CHARACTER.replace('{0}', name);
     }
-
+    
 }

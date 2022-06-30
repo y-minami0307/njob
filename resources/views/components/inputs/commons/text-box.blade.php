@@ -1,0 +1,2 @@
+{{--共通テキストボックスコンポーネント--}}
+<input type="text" id="{{ $id }}" class="input-common {{ $class }}" name="{{ $name }}" value="{{ $value }}" maxlength="{{ $maxlength }}" placeholder="{{ $placeholder }}" {!! $otherAttribute !!}>

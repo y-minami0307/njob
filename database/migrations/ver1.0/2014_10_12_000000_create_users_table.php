@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             // RememberToken
             $table->rememberToken();
+            // 所属ID
+            $table->integer('affiliation_code_id')->default(0);
             // 部門ID
             $table->integer('department_code_id')->default(0);
             // グループID

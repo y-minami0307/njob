@@ -1,0 +1,2 @@
+{{--セレクトボックスコンポーネント--}}
+<x-inputs.commons.select-box :id='$id' :name='$name' :classs='$classs' :selectItems='$selectItems' :selectedValue='$selectedValue' :visibleBlankItem='$visibleBlankItem'></x-inputs.commons.select-box>

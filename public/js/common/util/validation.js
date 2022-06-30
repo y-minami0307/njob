@@ -40,12 +40,41 @@ class ValidationUtil {
             if(isNaN(value)) {
                 // 値が数値でない
                 error.result = ValidationUtil.RESULT_ERROR;
-                error.message = Message.errorNumberOnly(name);
+                error.message = MessageUtil.errorNumberOnly(name);
             }
         } else {
             // 検証する値が未設定
             error.result = ValidationUtil.RESULT_BLANK;
-            error.message = Message.errorNotEntered(name);
+            error.message = MessageUtil.errorNotEntered(name);
+        }
+
+        return error;
+    }
+
+    /**
+     * 値が半角英数字かの検証を行う
+     * 
+     * @param {String} name  - 項目名
+     * @param {String} value - 検証値
+     * @returns {Object} 検証結果 {
+     *  result :検証結果を表す値
+     *  message:検証結果がNGの場合のメッセージ
+     * }
+     */
+     static alphaNumeric(name, value) {
+        let error = {'result' : ValidationUtil.RESULT_OK, 'message' : ''};
+
+        if (value !== '') {
+            let reg = /[^A-Za-z0-9]+/;
+            if(reg.test(value)) {
+                // 値が半角英数字でない
+                error.result = ValidationUtil.RESULT_ERROR;
+                error.message = MessageUtil.errorAlphaNumeric(name);
+            }
+        } else {
+            // 検証する値が未設定
+            error.result = ValidationUtil.RESULT_BLANK;
+            error.message = MessageUtil.errorNotEntered(name);
         }
 
         return error;
@@ -65,15 +94,16 @@ class ValidationUtil {
         let error = {'result' : ValidationUtil.RESULT_OK, 'message' : ''};
 
         if (value !== '') {
-            if(value.match(/[^A-Za-z0-9]+/)) {
+            let reg = /^[^\x01-\x7E\xA1-\xDF]+$/;
+            if(reg.test(value)) {
                 // 値が半角英数字でない
                 error.result = ValidationUtil.RESULT_ERROR;
-                error.message = Message.errorHalfWidthCharacter(name);
+                error.message = MessageUtil.errorHalfWidthCharacter(name);
             }
         } else {
             // 検証する値が未設定
             error.result = ValidationUtil.RESULT_BLANK;
-            error.message = Message.errorNotEntered(name);
+            error.message = MessageUtil.errorNotEntered(name);
         }
 
         return error;
@@ -97,12 +127,12 @@ class ValidationUtil {
             if (pattern.test(mail_address) == false) {
                 // メールアドレスがパターンに一致しない
                 error.result = ValidationUtil.RESULT_ERROR;
-                error.message = Message.errorNotMatchPattern(name);
+                error.message = MessageUtil.errorNotMatchPattern(name);
             }
         } else {
             // 検証するメールアドレスが未設定
             error.result = ValidationUtil.RESULT_BLANK;
-            error.message = Message.errorNotEntered(name);
+            error.message = MessageUtil.errorNotEntered(name);
         }
 
         return error;
@@ -125,12 +155,12 @@ class ValidationUtil {
             if (password.length < MIN_LENGTH_PASSWORD) {
                 // パスワードが8桁未満
                 error.result = ValidationUtil.RESULT_ERROR;
-                error.message = Message.errorMinLength(name, MIN_LENGTH_PASSWORD);
+                error.message = MessageUtil.errorMinLength(name, MIN_LENGTH_PASSWORD);
             }
         } else {
             // 検証するパスワードが未設定
             error.result = ValidationUtil.RESULT_BLANK;
-            error.message = Message.errorNotEntered(name);
+            error.message = MessageUtil.errorNotEntered(name);
         }
 
         return error;

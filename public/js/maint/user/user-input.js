@@ -47,10 +47,60 @@ $(function() {
     $('#mobile-phone-number').on('blur', blurMobilePhoneNumber);
     // 郵便番号 フォーカスアウト時
     $('#post-number').on('blur', blurPostNumber);
+    // 所属 変更時
+    $('#affiliations').on('change', changeAffiliations);
     // 部門 変更時
     $('#departments').on('change', changeDepartments);
     // 担当者フォーム　submit時イベント
     $('#user-input-form').on('submit', submitUserDetailForm);
+
+    // 初期化処理を実行
+    initialize();
+
+    /**
+     * 初期化処理
+     * 
+     */
+    function initialize () {
+        // 部門グループ初期化処理を実行
+        initializeDepartmentsGroups();
+    }
+
+    /**
+     * 部門グループを初期化
+     * 
+     */
+    async function initializeDepartmentsGroups() {
+        // 部門初期化処理を実行
+        await initializeDepartments();
+
+        // グループ初期化処理を実行
+        await initializeGroups();
+    }
+
+    /**
+     * 部門を初期化
+     * 
+     */
+    async function initializeDepartments() {
+        // 部門IDに一致するグループを設定
+        await setDepartments($("#affiliations").val());
+
+        // グループを選択
+        $('#departments').val($('#hidden-department-code').val());
+    }
+
+    /**
+     * グループを初期化
+     * 
+     */
+    async function initializeGroups() {
+        // 部門IDに一致するグループを設定
+        await setGroups($("#affiliations").val(), $("#departments").val());
+
+        // グループを選択
+        $('#groups').val($('#hidden-group-code').val());
+    }
 
     /**
      * ユーザ名 フォーカスアウト時
@@ -58,12 +108,12 @@ $(function() {
      * @param {Object} e 
      */
     function blurUserName(e) {
-        // 半角英数字かの検証を実施
+        // 半角文字かの検証を実施
         let validation = ValidationUtil.halfWidthCharacter($('#user-name-label').text(), $('#user-name').val());
-        if (ValidationUtil.result == ValidationUtil.RESULT_ERROR) {
+        if (validation.result == ValidationUtil.RESULT_ERROR) {
             // 検証結果がNG
-            showError($('#user-name-error'), $('#user-name-error-message'), ValidationUtil.message);
-        } else if(ValidationUtil.result == ValidationUtil.RESULT_BLANK) {
+            showError($('#user-name-error'), $('#user-name-error-message'), validation.message);
+        } else if(validation.result == ValidationUtil.RESULT_BLANK) {
             if (m_user_name !== '') {
                 // ユーザ名入力⇒ユーザ名未入力をエラーとする
                 showError($('#user-name-error'), $('#user-name-error-message'), MessageUtil.errorNotEntered($('#user-name-label').text()));
@@ -85,10 +135,10 @@ $(function() {
     function blurEmail(e) {
         // メールアドレスの検証を実施
         let validation = ValidationUtil.mailAddress($('#email-label').text(), $('#email').val());
-        if (ValidationUtil.result == ValidationUtil.RESULT_ERROR) {
+        if (validation.result == ValidationUtil.RESULT_ERROR) {
             // 検証結果がNG
-            showError($('#email-error'), $('#email-error-message'), ValidationUtil.message);
-        } else if(ValidationUtil.result == ValidationUtil.RESULT_BLANK) {
+            showError($('#email-error'), $('#email-error-message'), validation.message);
+        } else if(validation.result == ValidationUtil.RESULT_BLANK) {
             if (m_email !== '') {
                 // メールアドレス入力⇒メールアドレス未入力をエラーとする
                 showError($('#email-error'), $('#email-error-message'), MessageUtil.errorNotEntered($('#email-label').text()));
@@ -110,10 +160,10 @@ $(function() {
     function blurPassword(e) {
         // パスワードの検証を実施
         let validation = ValidationUtil.password($('#password-label').text(), $('#password').val());
-        if (ValidationUtil.result == ValidationUtil.RESULT_ERROR) {
+        if (validation.result == ValidationUtil.RESULT_ERROR) {
             // 検証結果がNG
-            showError($('#password-error'), $('#password-error-message'), ValidationUtil.message);
-        } else if(ValidationUtil.result == ValidationUtil.RESULT_BLANK) {
+            showError($('#password-error'), $('#password-error-message'), validation.message);
+        } else if(validation.result == ValidationUtil.RESULT_BLANK) {
             if (m_password !== '') {
                 // パスワード入力⇒パスワード未入力をエラーとする
                 showError($('#password-error'), $('#password-error-message'), MessageUtil.errorNotEntered($('#password-label').text()));
@@ -178,13 +228,72 @@ $(function() {
     }
 
     /**
+     * 所属 変更時
+     * 
+     * @param {Object} e 
+     */
+     function changeAffiliations(e) {
+        // 部門IDに一致するグループを設定
+        setDepartments($("#affiliations").val());
+    }
+
+    /**
+     * 所属IDに一致する部門をセレクトボックスに設定
+     * 
+     * @param {int} id - 所属ID
+     */
+    async function setDepartments(id) {
+        // 部門セレクトボックスの選択項目をクリア
+        SelectBoxUtil.clearExceptFirstItems($('#departments'));
+        // グループセレクトボックスの選択項目をクリア
+        SelectBoxUtil.clearExceptFirstItems($('#groups'));
+
+        // 所属IDに一致する部門を取得
+        let result = await AffiliationsApi.getDepartmentsFindById(Number(id));
+        if (result.status == 'success') {
+            // 部門の値を選択項目設定用の配列に追加
+            let items = [];
+            result.data.departments.forEach(function(department) {
+                items.push(SelectBoxUtil.getItem(department.id, department.name));
+            });
+
+            // 部門をセレクトボックスに追加
+            SelectBoxUtil.addItems($('#departments'), items);
+        }
+    }
+
+    /**
      * 部門 変更時
      * 
      * @param {Object} e 
      */
     function changeDepartments(e) {
         // 部門IDに一致するグループを設定
-        setGroups($("#departments").val());
+        setGroups($("#affiliations").val(), $("#departments").val());
+    }
+
+    /**
+     * 所属IDに一致する部門のグループをセレクトボックスに設定
+     * 
+     * @param {int} affiliation_id - 所属ID
+     * @param {int} department_id  - 部門ID
+     */
+    async function setGroups(affiliation_id, department_id) {
+        // グループセレクトボックスの選択項目をクリア
+        SelectBoxUtil.clearExceptFirstItems($('#groups'));
+
+        // 所属IDに一致する部門のグループを取得
+        let result = await AffiliationsApi.getGroupsFindByAffiliationDepartment(Number(affiliation_id), Number(department_id));
+        if (result.status == 'success') {
+            // グループの値を選択項目設定用の配列に追加
+            let items = [];
+            result.data.groups.forEach(function(group) {
+                items.push(SelectBoxUtil.getItem(group.id, group.name));
+            });
+
+            // グループをセレクトボックスに追加
+            SelectBoxUtil.addItems($('#groups'), items);
+        }
     }
 
     /**
@@ -243,9 +352,9 @@ $(function() {
     function validationNumberOnly($label, $input, $error, $error_message) {
         // 数値のみかの検証を実施
         let validation = ValidationUtil.numberOnly($label.text(), $input.val());
-        if (ValidationUtil.result == ValidationUtil.RESULT_ERROR) {
+        if (validation.result == ValidationUtil.RESULT_ERROR) {
             // 検証結果がNG
-            showError($error, $error_message, ValidationUtil.message);
+            showError($error, $error_message, validation.message);
         } else {
             // 検証結果がOKの場合、エラーメッセージを非表示に設定
             hideError($error, $error_message);
@@ -292,29 +401,6 @@ $(function() {
     function hideError($error_object, $error_message_object) {
         $error_object.hide();
         $error_message_object.text('');
-    }
-
-    /**
-     * 部門IDに一致するグループをセレクトボックスに設定
-     * 
-     * @param {int} department_id - 部門ID
-     */
-    async function setGroups(department_id) {
-        // グループセレクトボックスの選択項目をクリア
-        SelectBoxUtil.clearExceptFirstItems($('#groups'));
-
-        // 部門IDに一致するグループを取得
-        let result = await DepartmentApi.getGroupsFindByDepartmentId(Number(department_id));
-        if (result.status == 'success') {
-            // グループの値を選択項目設定用の配列に追加
-            let items = [];
-            result.data.groups.forEach(function(group) {
-                items.push(SelectBoxUtil.getItem(group.id, group.name));
-            });
-
-            // グループをセレクトボックスに追加
-            SelectBoxUtil.addItems($('#groups'), items);
-        }
     }
 
 });

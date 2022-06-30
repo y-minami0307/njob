@@ -267,6 +267,46 @@ textarea {
 }
 
 /******************************************************
+*   ボタン（丸いボタン）
+******************************************************/
+.button-common.circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding-left: 1px;
+}
+
+/******************************************************
+*   ボタン（編集）
+******************************************************/
+.button-common.edit {
+    border: 1px solid turquoise;
+    background-color: turquoise;
+}
+
+.button-common.edit:hover
+,.button-common.edit:focus {
+    color: turquoise;
+    border-color: turquoise;
+    background-color: white;
+}
+
+/******************************************************
+*   ボタン（削除）
+******************************************************/
+.button-common.delete {
+    border: 1px solid tomato;
+    background-color: tomato;
+}
+
+.button-common.delete:hover
+,.button-common.delete:focus {
+    color: tomato;
+    border-color: tomato;
+    background-color: white;
+}
+
+/******************************************************
 *   a
 ******************************************************/
 .link-common {
@@ -277,6 +317,197 @@ textarea {
 
 .link-common:hover {
     font-weight: bold;
+}
+
+/******************************************************
+*   検索条件
+******************************************************/
+.search-container {
+    padding: 10px;
+    width: 100%;
+    font-size: 12px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px 0px grey;
+}
+
+.search-container .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-container .row.end {
+    justify-content: flex-end;
+}
+
+.search-container .col {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+/* ラベル */
+.search-container .col > label {
+    margin-right : 5px;
+}
+
+.search-container label {
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.search-container .label-mark {
+    margin-right : 5px;
+    width: 6px;
+    height: 16px;
+    background-color: var(--input-border-color);
+}
+
+/* 入力欄 */
+.search-container input
+,.search-container select {
+    background-color: white;
+}
+
+/* 検索ボタン */
+.search-container #search-btn {
+    height: 28px;
+    width: 100px;
+}
+
+/* 詳細条件 */
+.search-container .detail-conditions-wrap {
+    position: relative;
+    padding: 10px;
+}
+
+/* 詳細条件開閉ボタン */
+.search-container .detail-conditions-wrap .detail-conditions-btn {
+    position: absolute;
+    color: crimson;
+    cursor: pointer;
+}
+
+.search-container .detail-conditions-wrap .detail-conditions-container {
+    margin-top: 5px;
+    margin-left: 17px;
+    border-top: dotted 1px crimson;
+    border-bottom: dotted 1px crimson;
+    background-color: lavender;
+    
+}
+
+/******************************************************
+*   table
+******************************************************/
+.table-common-wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 3px;
+    height: 100%;
+}
+
+.table-common-wrap > .table-common-container {
+    flex: 1;
+    overflow: auto;
+}
+
+/* ヘッダー */
+.table-common-wrap > header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px;
+}
+
+/* ヘッダー 新規作成リンク */
+.table-common-wrap > header .create-link i {
+    margin-right: 5px;
+}
+
+/* フッター */
+.table-common-wrap > footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+/* テーブル */
+.table-common {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-common thead th {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    color: palevioletred;
+    background-color: white;
+    border-bottom: 2px solid gray;
+    z-index: 1;
+}
+
+.table-common thead th:first-child {
+    border-left: 1px solid gainsboro;
+}
+
+.table-common thead th:last-child {
+    border-right: 1px solid gainsboro;
+}
+
+.table-common thead tr th
+,.table-common tbody tr td {
+    padding: 5px;
+}
+
+.table-common thead tr th
+,.table-common tbody tr td {
+    height: 35px;
+    vertical-align: middle;
+}
+
+.table-common tbody tr:nth-child(even) {
+    background-color: #ebebeb;
+}
+
+/******************************************************
+*   table td th
+******************************************************/
+td.center, th.center {
+    text-align: center;
+}
+
+/* 〇ボタン */
+.table-common .td-button-circle {
+    width: 40px;
+}
+
+.table-common .td-button-circle a {
+    display: flex;
+    justify-content: center;
+}
+
+/* ユーザID */
+.table-common .td-user-id {
+    width: 100px;
+}
+
+/* ユーザ名 */
+.table-common .td-user-name {
+    width: 100px;
+}
+
+/* ユーザ 名前 */
+.table-common .td-personal-name {
+    width: 120px;
+}
+
+/* 部署/部門/グループ/役職 */
+.table-common .td-affiliation
+,.table-common .td-department
+,.table-common .td-group
+,.table-common .td-position {
+    width: 150px;
 }
 
 /******************************************************
@@ -295,4 +526,16 @@ textarea {
 
 .valid-error-container > ul > li:last-child {
     margin-bottom: 0px;
+}
+
+/******************************************************
+*   入力エラー
+******************************************************/
+.input-error {
+    display: none;
+    color: var(--error-color);
+}
+
+.input-error i {
+    margin-right: 5px;
 }

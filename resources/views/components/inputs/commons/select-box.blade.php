@@ -1,6 +1,6 @@
 {{--共通セレクトボックスコンポーネント--}}
 <div class="select-common">
-    <select id="{{ $id }}" name="{{ $name }}">
+    <select id="{{ $id }}" class="{{ $class }}" name="{{ $name }}">
         @if ($visibleBlankItem)
             <option value="{{ \SelectBoxConst::BLANK_VALUE }}">{{ \SelectBoxConst::BLANK_NAME }}</option>
         @endif

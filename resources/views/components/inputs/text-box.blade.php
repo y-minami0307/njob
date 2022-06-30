@@ -1,0 +1,2 @@
+{{--テキストボックスコンポーネント--}}
+<x-inputs.commons.text-box :id='$id' :name='$name' :classs='$classs' :value='$value' :maxlength='$maxlength' :placeholder='$placeholder' :otherAttribute='$otherAttribute'></x-inputs.commons.text-box>

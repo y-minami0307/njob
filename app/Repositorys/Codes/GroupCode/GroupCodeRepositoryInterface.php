@@ -9,10 +9,9 @@ namespace App\Repositorys\Codes\GroupCode;
 interface GroupCodeRepositoryInterface
 {
     /**
-     * 部門IDに一致するグループコードを取得
+     * グループコードを取得
      * 
-     * @param int department_id 部門ID
      * @return Collection グループコード
      */
-    public function getGroupsFindByDepartment($department_id);
+    public function getAll();
 }

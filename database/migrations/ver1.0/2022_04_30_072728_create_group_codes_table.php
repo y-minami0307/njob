@@ -26,8 +26,6 @@ class CreateGroupCodesTable extends Migration
             $table->string('abbreviation')->length(5)->nullable();
             // 表示順
             $table->integer('sort_order')->default(0);
-            // 部門ID
-            $table->integer('department_code_id')->default(0);
             // タイムスタンプ
             $table->timestamps();
         });

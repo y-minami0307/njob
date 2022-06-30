@@ -22,6 +22,8 @@ class CreateDepartmentCodesTable extends Migration
             $table->id();
             // 部門名
             $table->string('name')->length(15)->unique();
+            // 略称
+            $table->string('abbreviation')->length(5)->nullable();
             // 表示順
             $table->integer('sort_order')->default(0);
             // タイムスタンプ

@@ -1,0 +1,2 @@
+{{--チェックボックスコンポーネント--}}
+<x-inputs.commons.check-box :id='$id' :name='$name' :classs='$classs' :value='$value' :unCheckedValue='$unCheckedValue' :checkedValue='$checkedValue' :label='$label' :checkBoxBeforeAndAfter='$checkBoxBeforeAndAfter' :otherAttribute='$otherAttribute'></x-inputs.commons.check-box>

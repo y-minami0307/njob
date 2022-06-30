@@ -24,6 +24,8 @@ class ValidatorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('half_width_character', 'App\Rules\HalfWidthCharacterRule@passes');
+        Validator::extend('alpha_numeric', 'App\Rules\AlphaNumeric@passes');
+        Validator::extend('half_width_character', 'App\Rules\HalfWidthCharacter@passes');
+        Validator::extend('numeric_only', 'App\Rules\NumericOnly@passes');
     }
 }
